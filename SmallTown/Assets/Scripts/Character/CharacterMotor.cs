@@ -10,6 +10,8 @@ public class CharacterMotor : MonoBehaviour
 
     private Animator Anim;
 
+    public LayerMask InteractionsLayer;
+
     private GameManager Manager;
 
     private Vector2 velocity = Vector2.zero;
@@ -17,13 +19,14 @@ public class CharacterMotor : MonoBehaviour
     [SerializeField] private float speed = 5f;
     private Rigidbody2D rb;
 
+    public bool canMove = true;
 
     public static CharacterMotor Instance;
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance != null /*&& Instance != this*/)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         Instance = this;
         DontDestroyOnLoad(this);

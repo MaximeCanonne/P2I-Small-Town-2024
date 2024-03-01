@@ -7,7 +7,7 @@ public class TP_Zone : MonoBehaviour
 {
     public int nextZone;
     public int actualZone;
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

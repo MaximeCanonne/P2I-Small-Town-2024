@@ -5,13 +5,19 @@ using UnityEngine;
 public class TP_EndZone : MonoBehaviour
 {
     public int lastZone;
+    [SerializeReference]
+    GameObject personnageSupp;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (lastZone == GameManager.Instance.previousZone)
+        if (GameManager.Instance != null && CharacterMotor.Instance != null)
         {
-            CharacterMotor.Instance.transform.position = transform.position;
+            if (lastZone == GameManager.Instance.previousZone)
+            {
+                CharacterMotor.Instance.transform.position = transform.position;
+                //personnageSupp.SetActive(false);
+            }
         }
     }
 
