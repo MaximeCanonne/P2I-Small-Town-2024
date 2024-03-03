@@ -11,16 +11,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int previousZone;
 
-    private void Awake()
-    {
-        if (Instance != null /*&& Instance!=this*/)
-        {
-            Destroy(this.gameObject);
-        }
-        Instance = this;
-        DontDestroyOnLoad(this);
-    }
-
     public static GameManager GetInstance()
     {
         return Instance;

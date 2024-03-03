@@ -13,10 +13,18 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638425735122637046
-    m_Hash: 2036410903
+      ticks: 638450633946282193
+    m_Hash: 3647181612
 m_EmbeddedPackageManifests:
-  m_ManifestsStatus: {}
+  m_ManifestsStatus:
+    C:/Users/arska/My project/New Unity Project/P2I-Small-Town-2024/SmallTown/Packages/super-tiled2unity.v2.1.1/package.json:
+      m_FilePath: C:/Users/arska/My project/New Unity Project/P2I-Small-Town-2024/SmallTown/Packages/super-tiled2unity.v2.1.1/package.json
+      m_PathExists: 1
+      m_ContentTrackingEnabled: 1
+      m_ModificationDate:
+        serializedVersion: 2
+        ticks: 638450633874144693
+      m_Hash: 1707222104
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
@@ -162,6 +170,7 @@ m_PackageAssets:
         - 10.0.2
         - 10.0.3
         - 10.1.0
+        - 10.1.1
         compatible:
         - 5.0.6
         - 5.0.7
@@ -416,6 +425,7 @@ m_PackageAssets:
         - 2.1.0-preview.6
         - 2.1.0
         - 2.2.0
+        - 2.3.1
         compatible:
         - 1.9.0
         - 1.10.2
@@ -562,6 +572,7 @@ m_PackageAssets:
         - 3.0.25
         - 3.0.26
         - 3.0.27
+        - 3.0.28
         compatible:
         - 1.0.2
         - 1.0.6
@@ -604,6 +615,7 @@ m_PackageAssets:
         - 3.0.25
         - 3.0.26
         - 3.0.27
+        - 3.0.28
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -1217,6 +1229,7 @@ m_PackageAssets:
         - 3.2.0-pre.6
         - 3.2.0-pre.7
         - 3.2.0-pre.8
+        - 3.2.0-pre.9
         - 4.0.0-pre.1
         - 4.0.0-pre.2
         compatible:
@@ -1231,6 +1244,7 @@ m_PackageAssets:
         - 3.2.0-pre.6
         - 3.2.0-pre.7
         - 3.2.0-pre.8
+        - 3.2.0-pre.9
         verified: 3.0.8
       dependencies:
       - name: com.unity.ugui
@@ -3156,6 +3170,67 @@ m_PackageAssets:
         url: 
         revision: 
         path: 
+    - packageId: com.seanba.super-tiled2unity@file:C:\Users\arska\My project\New
+        Unity Project\P2I-Small-Town-2024\SmallTown\Packages\super-tiled2unity.v2.1.1
+      testable: 1
+      isDirectDependency: 1
+      version: 2.1.1
+      source: 3
+      resolvedPath: C:\Users\arska\My project\New Unity Project\P2I-Small-Town-2024\SmallTown\Packages\super-tiled2unity.v2.1.1
+      assetPath: Packages/com.seanba.super-tiled2unity
+      name: com.seanba.super-tiled2unity
+      displayName: Super Tiled2Unity
+      author:
+        name: Sean Barton
+        email: sean@seanba.com
+        url: https://seanba.com/
+      category: 
+      type: 
+      description: Imports Tiled Map Editor assets into Unity
+      status: 4
+      errors: []
+      versions:
+        all: []
+        compatible: []
+        verified: 
+      dependencies:
+      - name: com.unity.modules.animation
+        version: 1.0.0
+      - name: com.unity.modules.physics2d
+        version: 1.0.0
+      - name: com.unity.modules.tilemap
+        version: 1.0.0
+      resolvedDependencies:
+      - name: com.unity.modules.animation
+        version: 1.0.0
+      - name: com.unity.modules.physics2d
+        version: 1.0.0
+      - name: com.unity.modules.tilemap
+        version: 1.0.0
+      keywords:
+      - Tiled
+      - Importer
+      - Plugin
+      registry:
+        id: 
+        name: 
+        url: 
+        scopes: []
+        isDefault: 0
+        capabilities: 0
+      hasRegistry: 0
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 0
+      documentationUrl: https://github.com/Seanba/SuperTiled2Unity/wiki
+      hasRepository: 0
+      repository:
+        type: 
+        url: 
+        revision: 
+        path: 
     - packageId: com.unity.modules.subsystems@1.0.0
       testable: 0
       isDirectDependency: 0
@@ -3410,6 +3485,7 @@ m_PackageAssets:
         - 9.0.1
         - 9.0.2
         - 9.0.3
+        - 9.0.4
         compatible:
         - 4.0.3
         - 4.0.4

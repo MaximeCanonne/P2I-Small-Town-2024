@@ -1,104 +1,57 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 public class CharacterMotor : MonoBehaviour
 {
-    private PlayerInput Inputs;
-
-    private InputAction moveAction;
-
-    private Animator Anim;
-
-    public LayerMask InteractionsLayer;
-
-    private GameManager Manager;
-
-    private Vector2 velocity = Vector2.zero;
-    private int Direction = 0;
-    [SerializeField] private float speed = 5f;
-    private Rigidbody2D rb;
-
-    public bool canMove = true;
+    public float speed;
+    private Rigidbody2D myRigidBody;
+    private Vector3 change;
+    private Animator animator;
+    public VectorValue startingPosition;
 
     public static CharacterMotor Instance;
-    private void Awake()
-    {
-        if (Instance != null /*&& Instance != this*/)
-        {
-            Destroy(this.gameObject);
-        }
-        Instance = this;
-        DontDestroyOnLoad(this);
-    }
 
     private void Start()
     {
-        Manager = GameManager.GetInstance();
-        Inputs = Manager.GetInputs();
-        Anim = GetComponent<Animator>();
-
-        moveAction = Inputs.actions.FindAction("Move");
-        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        myRigidBody = GetComponent<Rigidbody2D>();
+        animator.SetFloat("moveX", 0);
+        animator.SetFloat("moveY", -1);
+        transform.position = startingPosition.initialValue;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        Vector2 _moveValue = moveAction.ReadValue<Vector2>();
-        _moveValue = ChooseDirection(_moveValue);
-
-        velocity = _moveValue * speed;
-
-        transform.position += new Vector3(velocity.x * Time.fixedDeltaTime, velocity.y * Time.fixedDeltaTime, 0);
-
-        // Animation
-        Anim.SetInteger("direction", Direction);
-    }
-
-    private Vector2 ChooseDirection(Vector2 _value)
-    {
-        Vector2 _result = Vector2.zero;
-        if (Mathf.Abs(_value.x) >= Mathf.Abs(_value.y)) // Déplacements horiztonaux
+        change = Vector3.zero;
+        change.x = Input.GetAxisRaw("Horizontal");
+        change.y = Input.GetAxisRaw("Vertical");
+        UpdateAnimationAndMove();
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            _result = new Vector2(_value.x, 0);
+            speed = speed * 10;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            speed = speed / 10;
+        }
+    }
+
+    void UpdateAnimationAndMove()
+    {
+        if (change != Vector3.zero)
+        {
+            MoveCharacter();
+            animator.SetFloat("moveX", change.x);
+            animator.SetFloat("moveY", change.y);
+            animator.SetBool("moving", true);
         }
         else
         {
-            _result = new Vector2(0, _value.y);
+            animator.SetBool("moving", false);
         }
-
-        Direction = SetDirection(_result);
-        return _result;
     }
 
-    private int SetDirection(Vector2 _vector)
+    void MoveCharacter()
     {
-        if (_vector.x > 0)
-        {
-            return 6;
-        }
-        if (_vector.x < 0)
-        {
-            return 4;
-        }
-        if (_vector.y > 0)
-        {
-            return 8;
-        }
-        if (_vector.y < 0)
-        {
-            return 2;
-        }
-        return 0;
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Obstacle"))
-        {
-            Debug.Log("YEEEAAAAA");
-            // Collision avec un obstacle, arrêter le mouvement
-            rb.velocity = Vector2.zero;
-        }
+        myRigidBody.MovePosition(transform.position + change*speed*Time.deltaTime);
     }
 }

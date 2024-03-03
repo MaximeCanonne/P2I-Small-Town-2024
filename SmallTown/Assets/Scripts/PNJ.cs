@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-
+/*
 public class PNJ : MonoBehaviour // Dialogues Systems
 {
     [SerializeField]
@@ -28,7 +28,7 @@ public class PNJ : MonoBehaviour // Dialogues Systems
     public void StartDialogue()
     {
         Manager.dialogueHolder.SetActive(true);
-        CharacterMotor.Instance.canMove = false;
+        //CharacterMotor.Instance.canMove = false;
         isOndial = true;
         TypingText(Sentences);
     }
@@ -65,7 +65,7 @@ public class PNJ : MonoBehaviour // Dialogues Systems
             Manager.nameDisplay.text = "";
             Manager.dialogueHolder.SetActive(false);
 
-            CharacterMotor.Instance.canMove = true;
+            //CharacterMotor.Instance.canMove = true;
         }
     }
 
@@ -84,3 +84,4 @@ public class PNJ : MonoBehaviour // Dialogues Systems
         }
     }
 }
+*/

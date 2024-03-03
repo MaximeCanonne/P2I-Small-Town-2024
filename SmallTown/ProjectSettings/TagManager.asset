@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - breakable
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - 
   - Interactions
-  - 
+  - Breakable
   - 
   - 
   - 
@@ -43,5 +44,8 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: Player
+    uniqueID: 1092860527
+    locked: 0
+  - name: Breakable
     uniqueID: 409344775
     locked: 0
