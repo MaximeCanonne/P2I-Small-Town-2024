@@ -4949,6 +4949,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
+      propertyPath: itemName
+      value: Pitogrus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
       propertyPath: dialogBox
       value: 
       objectReference: {fileID: 789386646}
@@ -4956,6 +4960,22 @@ PrefabInstance:
       propertyPath: dialogText
       value: 
       objectReference: {fileID: 2088709145}
+    - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
+      propertyPath: myInventory
+      value: 
+      objectReference: {fileID: 11400000, guid: c2cacc783d4b0f549a169c7fced2183f, type: 2}
+    - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
+      propertyPath: BeforeQuestDialogs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
+      propertyPath: BeforeQuestDialogs.Array.data[0]
+      value: C'est un livre ouvert.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4392348099624123643, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
+      propertyPath: BeforeQuestDialogs.Array.data[1]
+      value: "Il ne contient rien d'int\xE9ressant."
+      objectReference: {fileID: 0}
     - target: {fileID: 4392348099624123644, guid: 95aa0dc2e12a69c4698dc9f913d4f5cb, type: 3}
       propertyPath: m_RootOrder
       value: 9

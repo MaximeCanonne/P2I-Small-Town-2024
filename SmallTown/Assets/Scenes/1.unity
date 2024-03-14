@@ -553,8 +553,8 @@ MonoBehaviour:
   cam: {fileID: 920179551}
   needText: 1
   placeName: Les bois
-  text: {fileID: 0}
-  placeText: {fileID: 0}
+  text: {fileID: 1067443874}
+  placeText: {fileID: 1067443876}
 --- !u!61 &169126438
 BoxCollider2D:
   m_ObjectHideFlags: 0

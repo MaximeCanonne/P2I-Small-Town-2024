@@ -21,7 +21,7 @@ public class Book : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentDialogueIndex = 0;
     }
 
     public virtual void Update()
@@ -31,17 +31,17 @@ public class Book : MonoBehaviour
             List<string> dialogs = new List<string>();
             if (!QuestCompleted)
             {
-                dialogs = BeforeQuestDialogs;
                 bool itemRemoved = myInventory.RemoveItemByName(itemName);
                 if (itemRemoved)
                 {
+
                     Debug.Log("Item removed successfully.");
                     QuestCompleted = true;
-
                 }
                 else
                 {
                     Debug.Log("Item not found in inventory.");
+                    dialogs = BeforeQuestDialogs;
                 }
             }
             else
@@ -50,10 +50,9 @@ public class Book : MonoBehaviour
             }
             if (dialogBox.activeInHierarchy)
             {
-                // Passe au dialogue suivant
-                currentDialogueIndex++;
-                if (currentDialogueIndex < dialogs.Count)
+                if (currentDialogueIndex < dialogs.Count - 1) // Vérifie s'il y a un dialogue suivant
                 {
+                    currentDialogueIndex++; // Passe au dialogue suivant
                     dialogText.text = dialogs[currentDialogueIndex];
                 }
                 else
@@ -77,8 +76,10 @@ public class Book : MonoBehaviour
         {
             dialogBox.SetActive(true);
             dialogText.text = BeforeQuestDialogs[currentDialogueIndex]; // Affiche le premier dialogue
+            currentDialogueIndex = 0; // Réinitialise l'index pour afficher le premier dialogue
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
