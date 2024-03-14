@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Security.Principal;
+using System.Diagnostics.SymbolStore;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private GameObject useButton;
+    public InventoryItem currentItem;
 
     public void SetTextAndButton(string description, bool buttonActive)
     {
@@ -31,29 +33,48 @@ public class InventoryManager : MonoBehaviour
     {
         if (playerInventory)
         {
-            for (int i = 0; i < playerInventory.myInventory.Count;i++)
+            for (int i = 0; i < playerInventory.myInventory.Count; i++)
             {
                 GameObject temp = Instantiate(blankInventorySlot, inventoryPanel.transform.position, Quaternion.identity);
                 temp.transform.SetParent(inventoryPanel.transform);
-                InventorySlot newSlot = temp.GetComponent< InventorySlot > ();
-                if (newSlot) 
+                InventorySlot newSlot = temp.GetComponent<InventorySlot>();
+                if (newSlot)
                 {
-                newSlot.Setup(playerInventory.myInventory[i], this);
+                    newSlot.Setup(playerInventory.myInventory[i], this);
                 }
             }
         }
     }
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
+        ClearInventorySlots();
         MakeInventorySlots();
         SetTextAndButton("", false);
     }
 
-    // Update is called once per frame
-    void Update()
+    void ClearInventorySlots()
     {
-        
+        for (int i = 0; i < inventoryPanel.transform.childCount; i++)
+        {
+            Destroy(inventoryPanel.transform.GetChild(i).gameObject);
+        }
     }
+
+    public void SetupDescriptionAndButton(string newDescriptionString, bool isButtonUsable, InventoryItem newItem)
+    {
+        currentItem = newItem;
+        descriptionText.text = newDescriptionString;
+        useButton.SetActive(isButtonUsable);
+    }
+
+    public void UseButtonPressed()
+    {
+        if (currentItem)
+        {
+            currentItem.Use();
+        }
+    }
+
 }

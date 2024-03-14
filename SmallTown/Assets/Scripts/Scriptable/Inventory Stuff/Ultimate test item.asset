@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae18f186e70e374d8e29946a395c64b, type: 3}
   m_Name: Ultimate test item
   m_EditorClassIdentifier: 
-  itemName: Truc1
+  itemName: Pot
   itemDescription: Test for the living
   itemImage: {fileID: 4455232240493665095, guid: cbfa64d7b0b6f0046946079b7bc17aa8, type: 3}
   numberHeld: 1
   usable: 0
   unique: 1
+  thisEvent:
+    m_PersistentCalls:
+      m_Calls: []

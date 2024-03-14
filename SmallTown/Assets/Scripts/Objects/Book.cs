@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,13 @@ public class Book : MonoBehaviour
     public Signal ContextOff;
     public GameObject dialogBox;
     public Text dialogText;
-    public string dialog;
+    public List<string> BeforeQuestDialogs = new List<string>(); // Stocke tous les dialogues d'avant réalisation de la quête
+    public List<string> AfterQuestDialogs = new List<string>();
+    public string itemName;
+    public bool QuestCompleted = false;
+    private int currentDialogueIndex = 0; // Pour suivre le dialogue actuel
     public bool playerInRange;
+    public PlayerInventory myInventory;
 
     // Start is called before the first frame update
     void Start()
@@ -18,20 +24,59 @@ public class Book : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     public virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         {
-            if(dialogBox.activeInHierarchy)
+            List<string> dialogs = new List<string>();
+            if (!QuestCompleted)
             {
-                dialogBox.SetActive(false);
+                dialogs = BeforeQuestDialogs;
+                bool itemRemoved = myInventory.RemoveItemByName(itemName);
+                if (itemRemoved)
+                {
+                    Debug.Log("Item removed successfully.");
+                    QuestCompleted = true;
+
+                }
+                else
+                {
+                    Debug.Log("Item not found in inventory.");
+                }
             }
             else
             {
-                dialogBox.SetActive(true);
-                dialogText.text = dialog;
+                dialogs = AfterQuestDialogs;
             }
+            if (dialogBox.activeInHierarchy)
+            {
+                // Passe au dialogue suivant
+                currentDialogueIndex++;
+                if (currentDialogueIndex < dialogs.Count)
+                {
+                    dialogText.text = dialogs[currentDialogueIndex];
+                }
+                else
+                {
+                    // Tous les dialogues ont été affichés, ferme la boîte de dialogue
+                    dialogBox.SetActive(false);
+                    // Réinitialise l'index pour une prochaine lecture
+                    currentDialogueIndex = 0;
+                }
+            }
+            else
+            {
+                ShowDialogue();
+            }
+        }
+    }
+
+    private void ShowDialogue()
+    {
+        if (BeforeQuestDialogs.Count > 0)
+        {
+            dialogBox.SetActive(true);
+            dialogText.text = BeforeQuestDialogs[currentDialogueIndex]; // Affiche le premier dialogue
         }
     }
 
@@ -52,5 +97,10 @@ public class Book : MonoBehaviour
             playerInRange = false;
             dialogBox.SetActive(false);
         }
+    }
+
+    public void TakeItemFromInventory(string itemName)
+    {
+        myInventory.RemoveItemByName(itemName);
     }
 }

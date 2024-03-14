@@ -27,11 +27,11 @@ public class CharacterMotor : MonoBehaviour
         UpdateAnimationAndMove();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            speed = speed * 10;
+            speed = speed * 4;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = speed / 10;
+            speed = speed / 4;
         }
     }
 
