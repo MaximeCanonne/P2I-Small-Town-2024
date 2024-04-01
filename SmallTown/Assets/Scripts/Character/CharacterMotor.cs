@@ -1,12 +1,11 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class CharacterMotor : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody2D myRigidBody;
-    private Vector3 change;
-    private Animator animator;
-    public VectorValue startingPosition;
+    public float speed; // Vitesse
+    private Rigidbody2D myRigidBody; // Personnage
+    private Vector3 change; // Vecteur (le z est constamment nul) qui contient les déplacements entrés en direct par le joueur
+    private Animator animator; // Interface de contrôle du personnage qui fait le lien entre les déplacements et l'animation
+    public VectorValue startingPosition; // Valeur de départ du personnage
 
     public static CharacterMotor Instance;
 

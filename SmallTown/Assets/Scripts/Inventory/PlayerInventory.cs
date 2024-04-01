@@ -7,29 +7,23 @@ public class PlayerInventory : ScriptableObject
 
     public bool RemoveItemByName(string name)
     {
-        // Trouvez l'élément dans l'inventaire par son nom
-        InventoryItem item = myInventory.Find(x => x.itemName == name);
+        InventoryItem item = myInventory.Find(x => x.itemName == name); // Trouve l'élément dans l'inventaire par son nom
 
-        // Si l'élément existe
-        if (item != null)
+        if (item != null) // Si l'élément existe
         {
-            // Décrémentez le nombre d'items détenus
-            item.numberHeld -= 1;
+            item.numberHeld -= 1; // Décrémente le nombre d'items détenus
 
-            // Si plus d'items ne sont détenus, retirez l'item de l'inventaire
-            if (item.numberHeld <= 0)
+            if (item.numberHeld <= 0) // Si plus d'items ne sont détenus, retire l'item de l'inventaire
             {
                 myInventory.Remove(item);
 #if UNITY_EDITOR
-                // Marquez l'inventaire comme modifié dans l'éditeur
-                UnityEditor.EditorUtility.SetDirty(this);
+                UnityEditor.EditorUtility.SetDirty(this); // Marque l'inventaire comme modifié dans l'éditeur
 #endif
             }
             else
             {
 #if UNITY_EDITOR
-                // Même si on ne retire pas l'item, marquez-le comme modifié si son nombre change
-                UnityEditor.EditorUtility.SetDirty(item);
+                UnityEditor.EditorUtility.SetDirty(item); // Même si on ne retire pas l'item, le marque comme modifié si son nombre change
 #endif
             }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoundedNPC : Book
+public class BoundedNPC : Interactive
 {
     private Vector3 directionVector;
     private Transform myTransform; // Position du PNJ

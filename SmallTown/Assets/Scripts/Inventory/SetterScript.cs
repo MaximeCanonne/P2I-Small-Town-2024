@@ -19,13 +19,13 @@ public class SetterScript : MonoBehaviour
         {
             menuActivated = false;
             InventoryMenu.SetActive(false);
-            Debug.Log("bahahaha");
+            // Debug.Log("Inventory_Test_Close");
         }
         else if (Input.GetButtonDown("inventory") && !menuActivated)
         {
             menuActivated = true;
             InventoryMenu.SetActive(true);
-            Debug.Log("Bouhouhouhou");
+            // Debug.Log("Inventory_Test_Open");
         }
     }
 }
