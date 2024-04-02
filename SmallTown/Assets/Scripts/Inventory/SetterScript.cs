@@ -4,28 +4,20 @@ using UnityEngine;
 
 public class SetterScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    public GameObject InventoryMenu;
-    private bool menuActivated;
+    public GameObject InventoryMenu; // Référence au menu de l'inventaire dans la scène Unity
+    private bool menuActivated; // Indicateur pour savoir si le menu de l'inventaire est activé ou non
 
     void Update()
     {
-        if (Input.GetButtonDown("inventory") && menuActivated)
+        if (Input.GetButtonDown("inventory") && menuActivated) // Si la touche d'ouverture du menu d'inventaire est pressée et que le menu est activé
         {
-            menuActivated = false;
-            InventoryMenu.SetActive(false);
-            // Debug.Log("Inventory_Test_Close");
+            menuActivated = false; // Désactive le menu
+            InventoryMenu.SetActive(false); // Désactive visuellement le menu d'inventaire dans la scène Unity
         }
-        else if (Input.GetButtonDown("inventory") && !menuActivated)
+        else if (Input.GetButtonDown("inventory") && !menuActivated) // Si la touche d'ouverture du menu d'inventaire est pressée et que le menu n'est pas activé
         {
-            menuActivated = true;
-            InventoryMenu.SetActive(true);
-            // Debug.Log("Inventory_Test_Open");
+            menuActivated = true; // Active le menu
+            InventoryMenu.SetActive(true); // Active visuellement le menu d'inventaire dans la scène Unity
         }
     }
 }

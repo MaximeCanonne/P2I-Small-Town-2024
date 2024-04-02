@@ -4755,8 +4755,8 @@ MonoBehaviour:
   Target: {fileID: 624556834}
   ymin: 7.99
   ymax: 7.99
-  xmin: -1.74
-  xmax: -1.74
+  xmin: -1.79
+  xmax: 1.79
   smoothing: 0
 --- !u!81 &1973355127
 AudioListener:

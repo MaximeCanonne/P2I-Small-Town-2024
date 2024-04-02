@@ -5,21 +5,21 @@ using UnityEngine.Events;
 
 public class SignalListener : MonoBehaviour
 {
+    public Signal signal; // Signal auquel ce script écoute
+    public UnityEvent signalEvent; // Événement Unity déclenché en réponse au signal
 
-    public Signal signal;
-    public UnityEvent signalEvent;
-
-    public void OnSignalRaised()
+    public void OnSignalRaised() // Méthode appelée lorsque le signal est émis
     {
-        signalEvent.Invoke();
+        signalEvent.Invoke(); // Déclenche l'événement Unity associé
     }
 
-    private void OnEnable()
+    private void OnEnable() // Méthode appelée lorsque le GameObject devient activé
     {
-        signal.RegisterListener(this);
+        signal.RegisterListener(this); // Enregistre ce script comme auditeur du signal
     }
-    private void OnDisable()
+
+    private void OnDisable() // Méthode appelée lorsque le GameObject devient désactivé
     {
-        signal.DeRegisterListener(this);
+        signal.DeRegisterListener(this); // Désenregistre ce script comme auditeur du signal
     }
 }

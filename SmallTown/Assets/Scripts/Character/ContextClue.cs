@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ContextClue : MonoBehaviour
 {
-    public GameObject contextClue;
+    public GameObject contextClue; // Référence à l'objet représentant l'indice contextuel
 
-    public void Enable()
+    public void Enable() // Méthode pour activer l'indice contextuel
     {
-       contextClue.SetActive(true);
+        contextClue.SetActive(true); // Active visuellement l'indice contextuel dans la scène Unity
     }
 
-    public void Disable()
+    public void Disable() // Méthode pour désactiver l'indice contextuel
     {
-        contextClue.SetActive(false);
+        contextClue.SetActive(false); // Désactive visuellement l'indice contextuel dans la scène Unity
     }
 }
